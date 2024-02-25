@@ -9,4 +9,16 @@ describe("Command class", function() {
     expect( function() { new Command();}).toThrow(new Error('Command type required.'));
   });
 
+  //This test checks that the constructor in the Command class correctly sets the commandType property in the new object.
+  it("constructor sets command type", function() {
+    const command = new Command('testCommand');
+    expect(command.commandType).toBe('testCommand');   
+  });
+
+  it("constructor sets a value passed in as the 2nd argument", function() {
+    const command = new Command('testCommand','testValue');
+    expect(command.value).toBe('testValue');   
+  });
+  
 });
+
