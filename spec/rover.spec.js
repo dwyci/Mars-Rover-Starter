@@ -54,10 +54,24 @@ it('responds with a false completed value when attempting to move in LOW_POWER m
   let rover = new Rover(98382);    // Passes 98382 as the rover's position.
   let response = rover.receiveMessage(message);
   let moveResult = response.results.find(result => result.commandType === 'MOVE');
-    
-  
-
 });
+// Test 13
+// A MOVE command will update the rover’s position with the position value in the command.
 
-
+it('responds with the position for the move command', function(){
+  let commands = [new Command('MODE_CHANGE', 'LOW_POWER'), new Command('STATUS_CHECK')];
+  let message = new Message('Test 8 name', commands);
+  let rover = new Rover(98382);    // Passes 98382 as the rover's position.
+  let response = rover.receiveMessage(message);
+  let moveResult = response.results.find(result => result.commandType === 'MOVE');
+ 
+  let updatedPositionResult = response.results.find(result => result.commandType === 'STATUS_CHECK');
+  if (updatedPositionResult) {
+    let updatedPosition = updatedPositionResult.roverStatus.position;
+    expect(updatedPosition).toBe(newPosition); // Checking if position has been updated
+  } else {
+    // If STATUS_CHECK command is not present, fail the test
+    
+  }
+});
 });
