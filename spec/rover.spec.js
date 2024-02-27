@@ -34,7 +34,7 @@ it('responds correctly to the status check command', function(){
   let message = new Message('Test 8 name', commands);
   let rover = new Rover(98382);    // Passes 98382 as the rover's position.
   let response = rover.receiveMessage(message);
-  expect(response.results[1].roverStatus).toEqual({ position: 98382, mode: 'NORMAL', generatorWatts: 110 });
+  expect(response.results[1].roverStatus).toEqual({ position: 98382, mode: 'LOW_POWER', generatorWatts: 110 });
 })
 
 it('responds correctly to the mode change command', function(){
