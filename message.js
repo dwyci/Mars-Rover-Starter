@@ -8,6 +8,6 @@ class Message {
     }
 }
 
-let message = new Message('Test message with two commands');
+
 
 module.exports = Message;
